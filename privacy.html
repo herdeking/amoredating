@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy & Terms of Service — Amore Dating</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --rose: #e8435a; --gold: #c9a84c; --ink: #150e13;
+      --muted: #8a7080; --border: rgba(232,67,90,0.12);
+      --cream: #fdf6f0; --white: #ffffff;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem; background: var(--ink);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: white; }
+    .nav-logo span { color: var(--gold); }
+    nav a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    nav a:hover { color: white; }
+
+    .page-hero {
+      background: var(--ink); color: white;
+      padding: 4rem 2.5rem 3rem; text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .page-hero p { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+
+    /* TAB NAV */
+    .tab-nav {
+      display: flex; justify-content: center; gap: 0;
+      background: white; border-bottom: 1px solid var(--border);
+      position: sticky; top: 57px; z-index: 90;
+    }
+    .tab-btn {
+      padding: 1rem 2.5rem; border: none; background: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+      color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: var(--rose); border-bottom-color: var(--rose); }
+    .tab-btn:hover:not(.active) { color: var(--ink); }
+
+    .content { display: none; max-width: 780px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .content.active { display: block; }
+
+    .updated { font-size: 0.8rem; color: var(--muted); margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+
+    .section { margin-bottom: 2.5rem; }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--ink);
+      margin-bottom: 0.85rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--rose); }
+    p { font-size: 0.9rem; line-height: 1.8; color: #3d2535; margin-bottom: 0.85rem; font-weight: 300; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 0.85rem; }
+    li { font-size: 0.88rem; line-height: 1.8; color: #3d2535; font-weight: 300; margin-bottom: 0.3rem; }
+    strong { font-weight: 600; color: var(--ink); }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fde8eb, #fff9f5);
+      border: 1px solid rgba(232,67,90,0.2);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-box p { margin-bottom: 0; font-size: 0.88rem; }
+
+    .contact-box {
+      background: var(--ink); color: white;
+      border-radius: 20px; padding: 2rem; margin-top: 3rem; text-align: center;
+    }
+    .contact-box h3 { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .contact-box p { color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-bottom: 1rem; }
+    .contact-box a {
+      display: inline-block; background: var(--rose); color: white;
+      padding: 0.65rem 1.5rem; border-radius: 50px; text-decoration: none;
+      font-weight: 600; font-size: 0.88rem; transition: background 0.2s;
+    }
+    .contact-box a:hover { background: #c42d44; }
+
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.4);
+      text-align: center; padding: 1.5rem; font-size: 0.78rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 0.75rem; }
+
+    @media(max-width:600px) {
+      nav { padding: 1rem; }
+      .page-hero { padding: 3rem 1.25rem 2rem; }
+      .page-hero h1 { font-size: 2rem; }
+      .tab-btn { padding: 0.85rem 1.25rem; font-size: 0.82rem; }
+      .content { padding: 2rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Amore<span>.</span></div>
+    <a href="index.html">← Back to Home</a>
+  </nav>
+
+  <div class="page-hero">
+    <h1>Legal &amp; Privacy</h1>
+    <p>Last updated: January 1, 2026 &nbsp;·&nbsp; Effective: January 1, 2026</p>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('privacy', this)">Privacy Policy</button>
+    <button class="tab-btn" onclick="showTab('terms', this)">Terms of Service</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PRIVACY POLICY                             -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="privacy" class="content active">
+    <p class="updated">Effective Date: January 1, 2026 &nbsp;|&nbsp; Last Updated: January 1, 2026</p>
+
+    <div class="highlight-box">
+      <p>At <strong>Amore Dating</strong> ("Amore," "we," "our," or "us"), your privacy is fundamental to everything we build. This Privacy Policy explains what information we collect, how we use it, and the choices you have. We operate the Amore dating application and website at <strong>amoredating.name.ng</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. Information We Collect</h2>
+      <h3>Information You Provide</h3>
+      <ul>
+        <li><strong>Account Information:</strong> Name, email address, phone number, date of birth, gender, and password when you register.</li>
+        <li><strong>Profile Information:</strong> Photos, biography, interests, job title, education, location, and relationship goals you add to your profile.</li>
+        <li><strong>Communications:</strong> Messages you send to other users through the app, and communications you send to us (e.g., support requests).</li>
+        <li><strong>Verification Data:</strong> Government ID or photos submitted for identity verification (processed securely and not stored longer than necessary).</li>
+        <li><strong>Payment Information:</strong> If you purchase a subscription, payment data is processed by our third-party payment provider. We do not store full card details.</li>
+      </ul>
+
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li><strong>Usage Data:</strong> How you use the app — profiles viewed, swipes, matches, features used, time spent.</li>
+        <li><strong>Device Information:</strong> Device type, operating system, unique device identifiers, IP address, browser type.</li>
+        <li><strong>Location Data:</strong> Approximate or precise location (with your permission) to show you nearby matches.</li>
+        <li><strong>Log Data:</strong> Server logs including access times, pages viewed, and errors.</li>
+      </ul>
+
+      <h3>Information From Third Parties</h3>
+      <ul>
+        <li>If you sign in via Google, Apple, or Facebook, we receive basic profile information from those platforms per your privacy settings with them.</li>
+        <li>Analytics partners may provide aggregated data about how users interact with the app.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>2. How We Use Your Information</h2>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Create and manage your account and provide the Amore service</li>
+        <li>Generate AI-powered compatibility scores and match suggestions</li>
+        <li>Enable communication between matched users</li>
+        <li>Verify your identity and prevent fraud or fake profiles</li>
+        <li>Process payments and manage subscriptions</li>
+        <li>Send you notifications about matches, messages, and app updates</li>
+        <li>Improve our AI matching algorithms and app features</li>
+        <li>Provide customer support and respond to your requests</li>
+        <li>Comply with legal obligations and enforce our Terms of Service</li>
+        <li>Protect the safety and security of users and the platform</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>3. How We Share Your Information</h2>
+      <p>We do <strong>not</strong> sell your personal data to third parties. We share information only in these circumstances:</p>
+
+      <h3>With Other Users</h3>
+      <p>Your public profile (name, age, photos, bio, interests, general location) is visible to other users on Amore. Private messages are only visible to you and the recipient.</p>
+
+      <h3>With Service Providers</h3>
+      <p>We work with trusted third-party providers for cloud hosting, payment processing, analytics, AI services (including Anthropic for AI features), and customer support. These providers are contractually bound to protect your data.</p>
+
+      <h3>For Legal Reasons</h3>
+      <p>We may disclose information if required by law, court order, or to protect the rights, safety, or property of Amore, our users, or the public.</p>
+
+      <h3>Business Transfers</h3>
+      <p>If Amore is acquired or merges with another company, your information may be transferred as part of that transaction. We will notify you before this occurs.</p>
+    </div>
+
+    <div class="section">
+      <h2>4. Your Choices &amp; Rights</h2>
+      <p>You have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Update inaccurate or incomplete information via your profile settings.</li>
+        <li><strong>Deletion:</strong> Request deletion of your account and personal data. Some data may be retained to comply with legal obligations.</li>
+        <li><strong>Portability:</strong> Request your data in a machine-readable format.</li>
+        <li><strong>Opt-out of marketing:</strong> Unsubscribe from promotional emails at any time via the link in any email.</li>
+        <li><strong>Location data:</strong> Disable location access in your device settings at any time.</li>
+        <li><strong>Push notifications:</strong> Manage notification preferences in the app or device settings.</li>
+      </ul>
+      <p>To exercise these rights, email us at <strong>privacy@amoredating.name.ng</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Data Security</h2>
+      <p>We implement industry-standard security measures including encryption in transit (TLS/HTTPS), encrypted storage of sensitive data, access controls limiting who can view your information, regular security audits, and secure payment processing via certified providers.</p>
+      <p>No system is 100% secure. If you suspect unauthorized access to your account, contact us immediately at <strong>security@amoredating.name.ng</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Data Retention</h2>
+      <p>We retain your data for as long as your account is active or as needed to provide our services. If you delete your account, we will delete or anonymize your personal data within 30 days, except where we are required to retain it for legal, fraud prevention, or safety purposes.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Children's Privacy</h2>
+      <p>Amore is strictly for users aged <strong>18 and older</strong>. We do not knowingly collect personal information from anyone under 18. If we discover a user is under 18, we will immediately delete their account and data. If you believe a minor has registered, please contact us immediately.</p>
+    </div>
+
+    <div class="section">
+      <h2>8. AI Features &amp; Your Data</h2>
+      <p>Amore uses artificial intelligence to provide compatibility scoring, reply suggestions, and profile tips. These features process your profile information and conversation context. AI-processed data is used solely to improve your experience and is not shared with third parties for advertising purposes.</p>
+      <p>You may opt out of AI features by contacting us, though this may limit some app functionality.</p>
+    </div>
+
+    <div class="section">
+      <h2>9. Cookies &amp; Tracking</h2>
+      <p>Our website uses cookies and similar tracking technologies to remember your preferences, analyze traffic, and improve user experience. You can control cookies through your browser settings. Disabling cookies may affect website functionality.</p>
+    </div>
+
+    <div class="section">
+      <h2>10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy periodically. We will notify you of significant changes via email or in-app notification at least 14 days before the changes take effect. Continued use of Amore after changes constitutes acceptance of the updated policy.</p>
+    </div>
+
+    <div class="section">
+      <h2>11. Contact Us</h2>
+      <p>For privacy-related questions or to exercise your rights:</p>
+      <ul>
+        <li><strong>Email:</strong> privacy@amoredating.name.ng</li>
+        <li><strong>General Support:</strong> support@amoredating.name.ng</li>
+        <li><strong>Website:</strong> amoredating.name.ng</li>
+      </ul>
+    </div>
+
+    <div class="contact-box">
+      <h3>Questions about your privacy?</h3>
+      <p>Our team is here to help. We respond to all privacy requests within 72 hours.</p>
+      <a href="mailto:privacy@amoredating.name.ng">Contact Privacy Team</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TERMS OF SERVICE                           -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="terms" class="content">
+    <p class="updated">Effective Date: January 1, 2026 &nbsp;|&nbsp; Last Updated: January 1, 2026</p>
+
+    <div class="highlight-box">
+      <p>These Terms of Service ("Terms") govern your use of the Amore Dating application and website (<strong>amoredating.name.ng</strong>) operated by Amore Dating ("Company," "we," "us"). By downloading, registering, or using Amore, you agree to these Terms. Please read them carefully.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. Eligibility</h2>
+      <p>To use Amore, you must:</p>
+      <ul>
+        <li>Be at least <strong>18 years of age</strong></li>
+        <li>Be legally capable of entering into a binding contract</li>
+        <li>Not be prohibited from using the service under applicable law</li>
+        <li>Not have been previously banned from Amore</li>
+      </ul>
+      <p>By registering, you confirm that all information you provide is accurate and that you meet these requirements.</p>
+    </div>
+
+    <div class="section">
+      <h2>2. Your Account</h2>
+      <h3>Registration</h3>
+      <p>You must provide accurate, current, and complete information when creating your account. You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account.</p>
+
+      <h3>One Account Per Person</h3>
+      <p>Each user may only have one active Amore account. Creating duplicate or fake accounts is strictly prohibited and will result in immediate termination of all associated accounts.</p>
+
+      <h3>Account Security</h3>
+      <p>Notify us immediately at <strong>security@amoredating.name.ng</strong> if you suspect unauthorized access to your account. We are not liable for losses resulting from unauthorized use of your account.</p>
+    </div>
+
+    <div class="section">
+      <h2>3. Acceptable Use</h2>
+      <p>You agree to use Amore only for lawful, genuine dating and social connection purposes. You must NOT:</p>
+      <ul>
+        <li>Create a fake profile or misrepresent your identity, age, or appearance</li>
+        <li>Harass, abuse, threaten, stalk, or intimidate other users</li>
+        <li>Send unsolicited commercial messages, spam, or solicitations</li>
+        <li>Post sexually explicit, violent, hateful, or offensive content</li>
+        <li>Use Amore for prostitution, escort services, or any paid sexual activity</li>
+        <li>Scam, defraud, or financially exploit other users</li>
+        <li>Share another user's personal information without their consent</li>
+        <li>Use bots, scrapers, or automated tools to access the service</li>
+        <li>Attempt to hack, reverse-engineer, or disrupt the platform</li>
+        <li>Post content that infringes copyright, trademarks, or other IP rights</li>
+        <li>Use the platform if you are a convicted sex offender</li>
+      </ul>
+      <p>Violation of these rules may result in immediate account suspension or termination, and may be reported to law enforcement where appropriate.</p>
+    </div>
+
+    <div class="section">
+      <h2>4. Content You Post</h2>
+      <p>You retain ownership of content you post on Amore (photos, bio, messages). By posting, you grant Amore a non-exclusive, worldwide, royalty-free license to use, display, and distribute your content solely for the purpose of operating and improving the service.</p>
+      <p>You are solely responsible for the content you post. Amore does not endorse any user content and is not responsible for content posted by users.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Subscriptions &amp; Payments</h2>
+      <h3>Free &amp; Premium Tiers</h3>
+      <p>Amore offers a free tier and optional paid subscriptions ("Amore Gold," "Amore Platinum") with enhanced features. Subscription pricing is displayed in the app before purchase.</p>
+
+      <h3>Billing</h3>
+      <p>Subscriptions are billed in advance on a recurring basis (monthly or annually). By subscribing, you authorize us to charge your payment method on a recurring basis until you cancel.</p>
+
+      <h3>Cancellation &amp; Refunds</h3>
+      <p>You may cancel your subscription at any time through your app store account settings. Cancellation takes effect at the end of the current billing period. We do not offer refunds for partial subscription periods, except where required by applicable law.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Safety</h2>
+      <p>Amore takes user safety seriously, but we cannot guarantee the identity or intentions of other users. You are solely responsible for your interactions with other users. We strongly recommend:</p>
+      <ul>
+        <li>Meeting matches in public places for first dates</li>
+        <li>Telling a friend or family member where you are going</li>
+        <li>Never sending money to someone you've only met online</li>
+        <li>Reporting suspicious profiles or behavior using the in-app report feature</li>
+        <li>Trusting your instincts — if something feels wrong, it probably is</li>
+      </ul>
+      <p>Report concerns to <strong>safety@amoredating.name.ng</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Disclaimers &amp; Limitation of Liability</h2>
+      <p>Amore is provided "as is" without warranties of any kind. We do not guarantee that you will find a match, that matches will be suitable, or that the service will be uninterrupted or error-free.</p>
+      <p>To the maximum extent permitted by law, Amore shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the service, including but not limited to personal injury, emotional distress, or financial loss resulting from interactions with other users.</p>
+      <p>Our total liability to you for any claims arising from these Terms shall not exceed the amount you paid to Amore in the 12 months preceding the claim.</p>
+    </div>
+
+    <div class="section">
+      <h2>8. Termination</h2>
+      <p>You may delete your account at any time in the app settings.</p>
+      <p>We may suspend or terminate your account at any time, with or without notice, if we believe you have violated these Terms, for safety reasons, or as required by law. Upon termination, your right to use Amore ceases immediately.</p>
+    </div>
+
+    <div class="section">
+      <h2>9. Governing Law</h2>
+      <p>These Terms are governed by the laws of the Federal Republic of Nigeria. Any disputes arising from these Terms shall be resolved in the courts of Lagos State, Nigeria.</p>
+    </div>
+
+    <div class="section">
+      <h2>10. Changes to Terms</h2>
+      <p>We may update these Terms from time to time. We will notify you of material changes via email or in-app notification at least 14 days in advance. Continued use after changes take effect constitutes your acceptance of the updated Terms.</p>
+    </div>
+
+    <div class="section">
+      <h2>11. Contact</h2>
+      <ul>
+        <li><strong>General:</strong> support@amoredating.name.ng</li>
+        <li><strong>Legal:</strong> legal@amoredating.name.ng</li>
+        <li><strong>Safety:</strong> safety@amoredating.name.ng</li>
+        <li><strong>Website:</strong> amoredating.name.ng</li>
+      </ul>
+    </div>
+
+    <div class="contact-box">
+      <h3>Questions about our Terms?</h3>
+      <p>Our legal team responds within 72 hours on business days.</p>
+      <a href="mailto:legal@amoredating.name.ng">Contact Legal Team</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Amore Dating — amoredating.name.ng</span><br><br>
+    <a href="index.html">Home</a>
+    <a href="mailto:support@amoredating.name.ng">Support</a>
+    <a href="mailto:privacy@amoredating.name.ng">Privacy</a>
+  </footer>
+
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Support direct link to #terms
+    if (window.location.hash === '#terms') {
+      showTab('terms', document.querySelectorAll('.tab-btn')[1]);
+    }
+  </script>
+
+</body>
+  </html>
