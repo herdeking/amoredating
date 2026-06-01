@@ -1,34 +1,652 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AmoreDating - Find Love in Nigeria</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amore — Find Your Person</title>
+  <meta name="description" content="Amore is Nigeria's most intelligent dating app. AI-powered matching. Real connections. Download free today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 0; padding: 0;
-      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-      color: white; text-align: center; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --rose: #e8435a;
+      --rose-dark: #c42d44;
+      --rose-mid: #f06070;
+      --gold: #c9a84c;
+      --gold-light: #fdf3dc;
+      --cream: #fdf6f0;
+      --ink: #150e13;
+      --ink-mid: #3d2535;
+      --muted: #8a7080;
+      --white: #ffffff;
+      --border: rgba(232,67,90,0.15);
     }
-    .container { padding: 20px; }
-    h1 { font-size: 3em; margin-bottom: 10px; }
-    p { font-size: 1.2em; margin-bottom: 30px; }
-    .btn { 
-      background: white; color: #ff6b6b; padding: 15px 40px; 
-      text-decoration: none; border-radius: 30px; font-weight: bold;
-      display: inline-block;
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ink);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(21,14,19,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 700; color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--rose); color: var(--white);
+      padding: 0.55rem 1.35rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.88rem; text-decoration: none;
+      transition: all 0.2s; border: none; cursor: pointer;
+    }
+    .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Gradient mesh background */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(232,67,90,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 10%, rgba(232,67,90,0.08) 0%, transparent 55%);
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(232,67,90,0.15); border: 1px solid rgba(232,67,90,0.3);
+      border-radius: 50px; padding: 0.35rem 0.85rem;
+      font-size: 0.78rem; font-weight: 600; color: var(--rose-mid);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 700; line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--rose);
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      line-height: 1.7; max-width: 480px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--rose), #f06070);
+      color: white; padding: 0.9rem 2rem; border-radius: 50px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.25s; box-shadow: 0 8px 28px rgba(232,67,90,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(232,67,90,0.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: white; padding: 0.9rem 2rem; border-radius: 50px;
+      font-weight: 500; font-size: 0.95rem; text-decoration: none;
+      transition: all 0.25s; backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+
+    .hero-trust {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 2rem; font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .trust-avatars { display: flex; }
+    .trust-av {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid var(--ink); background: var(--rose);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; margin-left: -8px;
+    }
+    .trust-av:first-child { margin-left: 0; }
+
+    /* Phone mockup */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .phone-wrap {
+      position: relative;
+      width: 280px;
+    }
+    .phone-glow {
+      position: absolute; inset: -40px;
+      background: radial-gradient(ellipse, rgba(232,67,90,0.25) 0%, transparent 65%);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:.7;transform:scale(1);} 50%{opacity:1;transform:scale(1.05);} }
+
+    .phone {
+      background: #1a0e14;
+      border-radius: 40px;
+      border: 2px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative; z-index: 1;
+    }
+    .phone-notch {
+      width: 100px; height: 28px; background: #1a0e14;
+      border-radius: 0 0 18px 18px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    .phone-screen {
+      padding: 0 1rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .phone-card {
+      background: linear-gradient(160deg, #2a1520, #1f1118);
+      border-radius: 20px; padding: 1rem;
+      border: 1px solid rgba(232,67,90,0.2);
+      position: relative; overflow: hidden;
+    }
+    .phone-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+    }
+    .pc-emoji { font-size: 2.5rem; text-align: center; padding: 0.5rem 0; }
+    .pc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; }
+    .pc-age { color: var(--rose); margin-left: 0.3rem; }
+    .pc-loc { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .pc-match {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(34,197,94,0.2); border: 1px solid rgba(34,197,94,0.4);
+      border-radius: 50px; padding: 0.2rem 0.6rem;
+      font-size: 0.7rem; font-weight: 700; color: #4ade80;
+    }
+    .pc-tags { display: flex; gap: 0.3rem; margin-top: 0.6rem; flex-wrap: wrap; }
+    .pc-tag {
+      padding: 0.15rem 0.5rem; border-radius: 50px;
+      background: rgba(232,67,90,0.2); color: var(--rose-mid);
+      font-size: 0.65rem; font-weight: 500;
+    }
+    .phone-actions {
+      display: flex; justify-content: center; gap: 1rem; padding: 0.5rem 0;
+    }
+    .phone-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; border: 2px solid;
+    }
+    .phone-btn.x { border-color: var(--rose); color: var(--rose); background: rgba(232,67,90,0.1); }
+    .phone-btn.h { border-color: #22c55e; color: #22c55e; background: rgba(34,197,94,0.1); }
+
+    .floating-badge {
+      position: absolute; background: white; border-radius: 14px;
+      padding: 0.6rem 0.9rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 600; color: var(--ink);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    .fb-match { bottom: 60px; right: -60px; animation-delay: 0s; }
+    .fb-ai { top: 80px; left: -55px; animation-delay: 1.5s; }
+    .fb-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+
+    /* ── STATS ── */
+    .stats {
+      padding: 4rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--rose), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .stat-lbl { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; font-weight: 500; }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 6rem 2.5rem;
+    }
+    .section-eyebrow {
+      text-align: center; font-size: 0.78rem; font-weight: 600;
+      color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700;
+      text-align: center; line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      text-align: center; color: rgba(255,255,255,0.55);
+      font-size: 1rem; max-width: 500px; margin: 0 auto 4rem;
+      line-height: 1.7; font-weight: 300;
+    }
+    .features-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .feat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; padding: 2rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .feat-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(232,67,90,0.25);
+      transform: translateY(-4px);
+    }
+    .feat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .feat-card:hover::before { opacity: 1; }
+    .feat-icon {
+      width: 52px; height: 52px; border-radius: 16px;
+      background: rgba(232,67,90,0.15); border: 1px solid rgba(232,67,90,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.25rem;
+    }
+    .feat-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.6rem; }
+    .feat-desc { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 6rem 2.5rem;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .steps {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 3rem; position: relative;
+    }
+    .steps::before {
+      content: ''; position: absolute; top: 28px; left: 15%; right: 15%;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--rose), var(--gold), var(--rose), transparent);
+      opacity: 0.4;
+    }
+    .step { text-align: center; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), #f06070);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 8px 24px rgba(232,67,90,0.4);
+    }
+    .step-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 6rem 2.5rem; }
+    .testi-grid {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 1.5rem;
+    }
+    .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.85rem; letter-spacing: 2px; }
+    .testi-text { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 1.25rem; font-weight: 300; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.65rem; }
+    .testi-av { width: 36px; height: 36px; border-radius: 50%; background: var(--rose); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .testi-name { font-weight: 600; font-size: 0.85rem; }
+    .testi-loc { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 6rem 2.5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(232,67,90,0.12) 0%, transparent 65%);
+    }
+    .cta-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
+      line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em;
+    }
+    .cta-sub { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300; }
+    .store-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .store-btn {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px; padding: 0.85rem 1.5rem;
+      color: white; text-decoration: none; transition: all 0.25s;
+      backdrop-filter: blur(8px);
+    }
+    .store-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+    .store-btn-icon { font-size: 1.8rem; }
+    .store-btn-text { text-align: left; }
+    .store-btn-sub { font-size: 0.68rem; color: rgba(255,255,255,0.55); display: block; }
+    .store-btn-name { font-weight: 600; font-size: 0.95rem; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { order: -1; }
+      .phone-wrap { width: 220px; }
+      .fb-match, .fb-ai { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .features-grid, .steps, .testi-grid { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>AmoreDating 💕</h1>
-    <p>Nigeria's newest platform for meaningful connections</p>
-    <p><strong>Coming Soon</strong></p>
-    <a href="#waitlist" class="btn">Join the Waitlist</a>
-  </div>
-  <!-- force rebuild -->
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Amore<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <a href="#download" class="nav-cta">Download Free</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">✨ AI-Powered Matching · Made in Nigeria</div>
+        <h1 class="hero-title">Find your <em>person,</em> not just a profile.</h1>
+        <p class="hero-sub">Amore uses intelligent compatibility AI to connect you with people who actually match your energy, values, and vibe — not just your location.</p>
+        <div class="hero-actions">
+          <a href="#download" class="btn-primary">📱 Download the App</a>
+          <a href="#how" class="btn-secondary">See how it works →</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <div class="trust-av">👩🏾</div>
+            <div class="trust-av">👨🏿</div>
+            <div class="trust-av">👩🏽</div>
+            <div class="trust-av">👨🏾</div>
+          </div>
+          <span>Joined by <strong style="color:white;">10,000+</strong> Nigerians already</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-wrap">
+          <div class="phone-glow"></div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-card">
+                <div class="pc-match">✨ 94% match</div>
+                <div class="pc-emoji">👩🏾‍🦱</div>
+                <div>
+                  <span class="pc-name">Adaeze</span>
+                  <span class="pc-name pc-age">26</span>
+                </div>
+                <div class="pc-loc">📍 Lagos Island</div>
+                <div class="pc-tags">
+                  <span class="pc-tag">Art</span>
+                  <span class="pc-tag">Travel</span>
+                  <span class="pc-tag">Afrobeats</span>
+                </div>
+              </div>
+              <div class="phone-actions">
+                <div class="phone-btn x">✕</div>
+                <div class="phone-btn h">♥</div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-badge fb-match">
+            <div class="fb-dot"></div>
+            <span>It's a Match! 🎉</span>
+          </div>
+          <div class="floating-badge fb-ai">
+            <span>✨</span>
+            <span>AI Score: 94%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">10K+</div><div class="stat-lbl">Active Users</div></div>
+      <div class="stat-item"><div class="stat-num">3.2K</div><div class="stat-lbl">Matches Made</div></div>
+      <div class="stat-item"><div class="stat-num">94%</div><div class="stat-lbl">Match Accuracy</div></div>
+      <div class="stat-item"><div class="stat-num">4.8★</div><div class="stat-lbl">App Rating</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-eyebrow">Why Amore</div>
+    <h2 class="section-title">Dating, but <em style="font-style:italic;color:var(--rose);">smarter.</em></h2>
+    <p class="section-sub">Every feature is designed to help you find a real connection, not just swipe endlessly.</p>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">✨</div>
+        <div class="feat-title">AI Compatibility Scoring</div>
+        <div class="feat-desc">Our AI analyzes your bio, interests, and goals in real-time to score every potential match — so you know before you swipe.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <div class="feat-title">Smart Reply Suggestions</div>
+        <div class="feat-desc">Never feel stuck. Our AI reads the conversation and suggests natural, personalized replies that sound like you.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👤</div>
+        <div class="feat-title">AI Profile Coach</div>
+        <div class="feat-desc">Get live tips to improve your profile and attract better matches. More thoughtful bio = better connections.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <div class="feat-title">Verified Profiles</div>
+        <div class="feat-desc">Photo verification and ID checks keep catfishing out. Every profile on Amore is a real person.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📍</div>
+        <div class="feat-title">Local Discovery</div>
+        <div class="feat-desc">Find people near you in Lagos, Abuja, Port Harcourt, or anywhere in Nigeria. Filter by city, distance, or state.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">Intent Matching</div>
+        <div class="feat-desc">Set what you're looking for — serious relationship, casual dating, friendship — and only see people who want the same thing.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-eyebrow">Simple & Fast</div>
+    <h2 class="section-title">Up and matching in minutes.</h2>
+    <p class="section-sub">Three steps and you're meeting real people who genuinely match your energy.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Build Your Profile</div>
+        <div class="step-desc">Add your photos, write a bio, set your interests and what you're looking for. Takes under 3 minutes.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Get AI-Scored Matches</div>
+        <div class="step-desc">Our AI instantly scores every potential match 0–100% based on real compatibility — not just distance.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Connect & Meet</div>
+        <div class="step-desc">Match, chat with AI suggestions, and take it to real life. Amore gets out of the way when it matters.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="stories">
+    <div class="section-eyebrow">Real Stories</div>
+    <h2 class="section-title">They found their person.</h2>
+    <p class="section-sub">Thousands of Nigerians have made real connections on Amore.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"I'd been on other apps for years with nothing real. Amore's AI matched me with someone who actually shares my values. We've been together 8 months."</div>
+        <div class="testi-author">
+          <div class="testi-av">👩🏾</div>
+          <div><div class="testi-name">Chisom O.</div><div class="testi-loc">Lagos, Nigeria</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The compatibility score thing is not a gimmick — my highest match was 91% and she is genuinely my type in every way. We're getting married next year."</div>
+        <div class="testi-author">
+          <div class="testi-av">👨🏿</div>
+          <div><div class="testi-name">Emeka B.</div><div class="testi-loc">Abuja, Nigeria</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The AI reply suggestions saved me so many awkward moments when I didn't know what to say. The conversation just flowed naturally from there."</div>
+        <div class="testi-author">
+          <div class="testi-av">👩🏽</div>
+          <div><div class="testi-name">Fatima A.</div><div class="testi-loc">Port Harcourt, Nigeria</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <section class="cta-section" id="download">
+    <div class="cta-inner">
+      <h2 class="cta-title">Your person is already on Amore.</h2>
+      <p class="cta-sub">Join thousands of Nigerians finding real connections every day. Free to download, free to match.</p>
+      <div class="store-btns">
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon">🍎</div>
+          <div class="store-btn-text">
+            <span class="store-btn-sub">Download on the</span>
+            <span class="store-btn-name">App Store</span>
+          </div>
+        </a>
+        <a href="#" class="store-btn">
+          <div class="store-btn-icon">▶️</div>
+          <div class="store-btn-text">
+            <span class="store-btn-sub">Get it on</span>
+            <span class="store-btn-name">Google Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Amore<span>.</span></div>
+    <div class="footer-links">
+      <a href="#features">Features</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="privacy.html#terms">Terms of Service</a>
+      <a href="mailto:support@amoredating.name.ng">Support</a>
+    </div>
+    <div class="footer-copy">© 2026 Amore Dating. All rights reserved.</div>
+  </footer>
+
 </body>
-</html>
+  </html>
